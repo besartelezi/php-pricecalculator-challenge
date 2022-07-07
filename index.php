@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 //include all requirements to connect to database
 require_once('vendor\autoload.php');
-require('Controller/DatabaseLoader.php');
+require('Model/DatabaseLoader.php');
 
 //include all your model files here
 require 'Model/User.php';
