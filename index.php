@@ -1,8 +1,13 @@
 <?php
 declare(strict_types=1);
 
+//include all requirements to connect to database
+require_once('vendor\autoload.php');
+require('Controller/DatabaseLoader.php');
+
 //include all your model files here
 require 'Model/User.php';
+
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
@@ -16,4 +21,3 @@ if(isset($_GET['page']) && $_GET['page'] === 'info') {
 }
 
 
-$controller->render($_GET, $_POST);
