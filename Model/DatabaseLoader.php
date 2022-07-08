@@ -7,6 +7,7 @@ class DatabaseLoader
     private string $dbname;
     private string $dbuser;
     private string $dbpass;
+    private PDO $conn;
 
     public function __construct(){
         $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__), ".env");
@@ -18,24 +19,15 @@ class DatabaseLoader
         $this->getConnection();
     }
 
-    public function getConnection():void{
-        // The format required by PDO
-//$dbh = new PDO('mysql:host=' . $_ENV['DATABASE_HOST'] . ';dbname=' . $_ENV['DATABASE_NAME'], $_ENV['DATABASE_USER'], $_ENV['DATABASE_PASSWORD']);
+    public function getConnection():PDO{
         try
         {
-            $conn = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname, $this->dbuser, $this->dbpass);
+            $this->conn = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname, $this->dbuser, $this->dbpass);
 
             //uncomment echo to check if connection was established
-//             echo "Connected to $this->dbname at $this->dbhost successfully.";
+             echo "Connected to $this->dbname at $this->dbhost successfully.";
 
-
-            //Commented out example of sql query//
-
-//    $sqlResult = $conn->query("select name,price from product");
-//    print_r($sqlResult);
-//    while ($row = $sqlResult->fetch()) {
-//        print "<p>Name: {$row[0]} {$row[1]}</p>";
-//    }
+                return $this->conn;
 
         }
 
@@ -45,8 +37,9 @@ class DatabaseLoader
         }
     }
 
+    public function getConn():PDO
+    {
+        return $this->conn;
+    }
 
-// Retrieve env variable example
-//$userName = $_ENV['DATABASE_USER'];
-//echo $userName;
 }
