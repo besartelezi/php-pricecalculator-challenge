@@ -25,7 +25,7 @@ class DatabaseLoader
             $this->conn = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname, $this->dbuser, $this->dbpass);
 
             //uncomment echo to check if connection was established
-             echo "Connected to $this->dbname at $this->dbhost successfully.";
+//             echo "Connected to $this->dbname at $this->dbhost successfully.";
 
                 return $this->conn;
 
