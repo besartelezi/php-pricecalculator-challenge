@@ -32,11 +32,21 @@ For now you should create 3 different directories:
 ![alt-text](resources/images/mvc-structure.PNG)
 
 With this information, we think that these have to be our next goals:
-- [ ] Put the code that gets us the database in the model folder
-- [ ] Test out the controller and view
-  - [ ] Add code to the controller to create variables. These variables call on the Getter that was set in the module to get more specific information.
-  - [ ] Echo the variables that were made in the controller onto the view.
+- [x] Put the code that gets us the database in the model folder
+- [x] Test out the controller and view
+  - [x] Add code to the controller to create variables. These variables call on the Getter that was set in the module to get more specific information.
+  - [x] Echo the variables that were made in the controller onto the view.
 This is something we will do in group.
 As long as we still don't have any small, concrete goals and we're still figuring out stuff, working together is advised.
 Once we're done with this small TO-DO list, Glenn and I will once again come together and figure out the next step.
 The most important thing we have to figure out, is what classes should be created exactly in the model.
+
+### MVC 2: Electric Boogaloo
+We were finally able to properly connect through the database, while following the MVC structure AND get specific information from the database.
+After getting this "massive W" (how the cool youths of today like to refer to something that went great), we've gotten a better understanding of the MVC structure and it's advantages.
+One of those advantages being how easy it makes it to be able to work in teams without interfering in each other's code.
+With that said, here are our next goals:
+- [ ] Create a dropdown for the customers as well
+- [ ] Check if the $_GET or $_POST show up 
+- [ ] Create a new function in the controller, that asks the database for the information the user requested
+- [ ] Show the requested data on the view
