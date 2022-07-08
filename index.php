@@ -7,6 +7,7 @@ require_once('vendor\autoload.php');
 //include all your model files here
 require 'Model/DatabaseLoader.php';
 require 'Model/Product.php';
+require 'Model/Customer.php';
 
 //include all your controllers here
 require 'Controller/HomepageController.php';
