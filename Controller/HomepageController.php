@@ -13,10 +13,15 @@ class HomepageController
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
-        $sql = $this->databaseLoader->getConnection()->query("select name,price from product");
+        $sqlProduct = $this->databaseLoader->getConnection()->query("SELECT name,price FROM product");
         $productsArray = [];
-        while ($row = $sql->fetch()) {
+        while ($row = $sqlProduct->fetch()) {
             $productsArray[] = new product($row[0], $row[1]);
+        }
+        $sqlCustomer = $this->databaseLoader->getConnection()->query("SELECT firstname, lastname FROM customer");
+        $customersArray = [];
+        while ($row = $sqlCustomer->fetch()) {
+            $customersArray[] = new Customer($row[0], $row[1]);
         }
 
         // you should not echo anything inside your controller - only assign vars here
