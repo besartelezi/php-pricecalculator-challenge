@@ -41,12 +41,19 @@ As long as we still don't have any small, concrete goals and we're still figurin
 Once we're done with this small TO-DO list, Glenn and I will once again come together and figure out the next step.
 The most important thing we have to figure out, is what classes should be created exactly in the model.
 
-### MVC 2: Electric Boogaloo
+## MVC 2: Electric Boogaloo
 We were finally able to properly connect through the database, while following the MVC structure AND get specific information from the database.
 After getting this "massive W" (how the cool youths of today like to refer to something that went great), we've gotten a better understanding of the MVC structure and it's advantages.
 One of those advantages being how easy it makes it to be able to work in teams without interfering in each other's code.
 With that said, here are our next goals:
 - [x] Create a dropdown for the customers as well
 - [x] Check if the $_GET or $_POST show up 
-- [ ] Create a new function in the controller, that asks the database for the information the user requested
-- [ ] Show the requested data on the view
+- [x] Create a new function in the controller, that asks the database for the information the user requested
+  - [x] Get user input
+  - [x] Get basic information of the product the user selected
+  - [x] Display the basic information (name, price, id)
+- [x] Show the requested data on the view
+
+
+
+
