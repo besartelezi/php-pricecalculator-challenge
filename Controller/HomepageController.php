@@ -1,16 +1,25 @@
 <?php
-declare(strict_types = 1);
-require ('Model/DatabaseLoader.php');
+declare(strict_types=1);
+
+
+
 class HomepageController
 {
-    public function __construct(){
-        new DatabaseLoader();
+    private DatabaseLoader $databaseLoader;
+
+    public function __construct()
+    {
+        $this->databaseLoader = new DatabaseLoader();
     }
+
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
-        //this is just example code, you can remove the line below
-        $user = new User('John Smith');
+        $sql = $this->databaseLoader->getConnection()->query("select name,price from product");
+        $productsArray = [];
+        while ($row = $sql->fetch()) {
+            $productsArray[] = new product($row[0], $row[1]);
+        }
 
         // you should not echo anything inside your controller - only assign vars here
 
