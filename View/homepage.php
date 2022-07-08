@@ -14,8 +14,9 @@ Anything complex should be calculated in the model -->
     <select name="products" id="products">
         <?php
         foreach ($productsArray as $product){
-            $name = ucfirst($product->getProductName());
-            echo "<option value='" .$name . "'>" . $name . "</option>";
+            $productName = ucfirst($product->getProductName());
+            $productID = $product->getProductID();
+            echo "<option value=" .$productID . ">" . $productName . "</option>";
         }
         ?>
     </select>
@@ -25,20 +26,24 @@ Anything complex should be calculated in the model -->
     <select name="customers" id="customers">
         <?php
         foreach ($customersArray as $customer){
+            $customerID = $customer ->getCustomerID();
             $firstName = ucfirst($customer->getFirstName());
             $lastName = ucfirst($customer->getLastName());
             $fullName = $firstName . " " . $lastName;
-            echo "<option value='" .$fullName. "'> ".$fullName ." </option>";
+            echo "<option value=" .$customerID. "> ".$fullName ." </option>";
         }
         ?>
     </select>
-    <button type="submit" class="btn btn-primary" value="Send">Send</button>
+    <button type="submit" class="btn btn-primary" name="submit">Send</button>
 </form>
 
     <?php
-    var_dump($_POST);
-    ?>
+    if (isset($POST['submit'])){
+        echo "Product name: " .$productDetails['name'] ."<br>";
+        echo "Price: €" .$productDetails['price']/100;
 
+    }
+    ?>
 
 <!-- code to get price -->
 <!--    $price = number_format($product->getProductPrice() / 100, 2);-->
