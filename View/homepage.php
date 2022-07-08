@@ -8,18 +8,38 @@ Anything complex should be calculated in the model -->
 <!--    <p><a href="index.php?page=info">To info page</a></p>-->
 <!---->
 <!--    <p>Put your content here.</p>-->
-
+<form method="post">
     <label for="products">Choose a product:</label>
 
-    <select name="products" id="cars">
+    <select name="products" id="products">
         <?php
         foreach ($productsArray as $product){
             $name = ucfirst($product->getProductName());
-            echo "<option value=" .$name . ">" . $name . "</option>";
+            echo "<option value='" .$name . "'>" . $name . "</option>";
         }
-
         ?>
     </select>
+
+    <label for="customers">Choose a customer:</label>
+
+    <select name="customers" id="customers">
+        <?php
+        foreach ($customersArray as $customer){
+            $firstName = ucfirst($customer->getFirstName());
+            $lastName = ucfirst($customer->getLastName());
+            $fullName = $firstName . " " . $lastName;
+            echo "<option value='" .$fullName. "'> ".$fullName ." </option>";
+        }
+        ?>
+    </select>
+    <button type="submit" class="btn btn-primary" value="Send">Send</button>
+</form>
+
+    <?php
+    var_dump($_POST);
+    ?>
+
+
 <!-- code to get price -->
 <!--    $price = number_format($product->getProductPrice() / 100, 2);-->
 </section>
