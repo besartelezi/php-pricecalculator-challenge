@@ -2,15 +2,15 @@
 <!-- this is the view, try to put only simple if's and loops here.
 Anything complex should be calculated in the model -->
 <section>
-    <h4>Hello <?php echo $_ENV['DATABASE_NAME']?>,</h4>
+<!--    <h4>Hello --><?php //echo $_ENV['DATABASE_NAME']?><!--,</h4>-->
+<!---->
+<!--    <p><a href="index.php?page=info">To info page</a></p>-->
+<!---->
+<!--    <p>Put your content here.</p>-->
 
-    <p><a href="index.php?page=info">To info page</a></p>
+    <label for="products">Choose a product:</label>
 
-    <p>Put your content here.</p>
-
-    <label for="cars">Choose a car:</label>
-
-    <select name="cars" id="cars">
+    <select name="products" id="cars">
         <?php
 
 
