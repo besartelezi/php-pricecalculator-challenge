@@ -46,7 +46,7 @@ We were finally able to properly connect through the database, while following t
 After getting this "massive W" (how the cool youths of today like to refer to something that went great), we've gotten a better understanding of the MVC structure and it's advantages.
 One of those advantages being how easy it makes it to be able to work in teams without interfering in each other's code.
 With that said, here are our next goals:
-- [ ] Create a dropdown for the customers as well
-- [ ] Check if the $_GET or $_POST show up 
+- [x] Create a dropdown for the customers as well
+- [x] Check if the $_GET or $_POST show up 
 - [ ] Create a new function in the controller, that asks the database for the information the user requested
 - [ ] Show the requested data on the view
