@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class product
 {
-    //    private int $id;
+    private int $id;
     private String $name;
     private int $price;
 
@@ -29,4 +29,6 @@ class product
     {
         return $this->price;
     }
+
+
 }
