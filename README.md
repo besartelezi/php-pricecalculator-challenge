@@ -74,7 +74,7 @@ This means that we can start on doing the thing that you'd expect from a price c
 #### To calculate the price:
 - [x] For the customer group: In case of variable discounts look for highest discount of all the groups the user has.
 - [x] If some groups have fixed discounts, count them all up.
-- [ ] Look which discount (fixed or variable) will give the customer the most value. 
+- [x] Look which discount (fixed or variable) will give the customer the most value. 
 - [ ] Now look at the discount of the customer.
 - [ ] In case both customer and customer group have a percentage, take the largest percentage.
 - [ ] First subtract fixed amounts, then percentages!
