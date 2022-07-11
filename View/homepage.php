@@ -41,13 +41,14 @@ Anything complex should be calculated in the model -->
     if (isset($POST['submit'])){
         echo "Product name: " .$productDetails['name'] ."<br>";
         echo "Price: €" .$productPriceWithoutDiscount ."<br>";
-//        var_dump($customerDetails); //to check if group id is correct and if we can get correct info out of database
+//        echo $customerDetails['fixed_discount'] . "<br>";
+//        echo $customerDetails['variable_discount'];
+        //to check if group id is correct and if we can get correct info out of database
 //        var_dump($productDetails);
 //        var_dump($customerGroupArray);
 //        var_dump($maxVariableDiscount);
-        var_dump($sumFixedDiscounts);
-        var_dump($variableDiscountValue);
-        var_dump($discountedPriceCustomerGroup);
+        var_dump($finalVariableDiscount);
+
     }
     ?>
 
