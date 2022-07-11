@@ -8,6 +8,7 @@ require_once('vendor\autoload.php');
 require 'Model/DatabaseLoader.php';
 require 'Model/Product.php';
 require 'Model/Customer.php';
+require 'Model/CustomerGroup.php';
 
 //include all your controllers here
 require 'Controller/HomepageController.php';
