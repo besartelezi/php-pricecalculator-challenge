@@ -55,7 +55,19 @@ class HomepageController
             or id = (select parent_id from customer_group where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . ")));");
             $fetchSumFixedDiscounts = $sqlGetSumFixedDiscounts->fetch();
             $sumFixedDiscounts = $fetchSumFixedDiscounts[0];
+
+            $productPriceWithoutDiscount = $productDetails['price']/100;
+            $variableDiscountValue = number_format($productPriceWithoutDiscount/100 * $maxVariableDiscount,2);
+
+            if ($productPriceWithoutDiscount - $variableDiscountValue < $productPriceWithoutDiscount - $sumFixedDiscounts) {
+                $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $variableDiscountValue,2);
+            }   else {
+                $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $sumFixedDiscounts,2);
+            }
         }
+
+
+
 
         // you should not echo anything inside your controller - only assign vars here
 
