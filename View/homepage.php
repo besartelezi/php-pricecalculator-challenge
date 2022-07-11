@@ -43,6 +43,8 @@ Anything complex should be calculated in the model -->
         echo "Price: €" .$productDetails['price']/100 ."<br>";
 //        var_dump($customerDetails); //to check if group id is correct and if we can get correct info out of database
 //        var_dump($productDetails);
+        var_dump($customerGroupArray);
+        var_dump($maxVariableDiscount);
     }
     ?>
 
