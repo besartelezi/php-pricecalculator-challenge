@@ -10,11 +10,14 @@ class Customer
     private int $fixedDiscount;
     private int $variableDiscount;
 
-    public function __construct(int $id, string $firstName,  string $lastName)
+    public function __construct(int $id, string $firstName,  string $lastName, int $groupID)
     {
         $this->id = $id;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+        $this->groupID = $groupID;
+//        $this->fixedDiscount = $fixedDiscount;
+//        $this->variableDiscount = $variableDiscount;
     }
 
     public function getCustomerID()
