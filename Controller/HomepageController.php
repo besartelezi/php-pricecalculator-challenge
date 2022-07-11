@@ -64,6 +64,17 @@ class HomepageController
             }   else {
                 $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $sumFixedDiscounts,2);
             }
+
+            $customerVariableDiscount = $customerDetails['variable_discount'];
+            if ($customerVariableDiscount === null) {
+                $finalVariableDiscount = $maxVariableDiscount;
+            }
+            else if ($maxVariableDiscount > $customerVariableDiscount) {
+                $finalVariableDiscount = $maxVariableDiscount;
+            }
+            else {
+                $finalVariableDiscount = $customerVariableDiscount;
+            }
         }
 
 
