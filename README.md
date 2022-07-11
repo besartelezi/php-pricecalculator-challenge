@@ -57,9 +57,9 @@ With that said, here are our next goals:
 ## Getting down to :bee: siness
 Another chapter, another new object on the to-do list.
 - [ ] Get the user requested information, regarding the customer groups
-  - [ ] Create a Class called CustomerGroup
-  - [ ] Access the customer group ID from the Customer database
-    - [ ] This is something that we should normally already be able to access.
+  - [x] Create a Class called CustomerGroup
+  - [x] Access the customer group ID from the Customer database
+    - [x] This is something that we should normally already be able to access.
           If not, then we should edit the query to be able to access it.
   - [ ] Create a new query in the homepage controller that requests the customerGroup database with the matching customer group id.
 - [ ] var_dump the information of that customer group
@@ -79,3 +79,24 @@ This means that we can start on doing the thing that you'd expect from a price c
 - [ ] In case both customer and customer group have a percentage, take the largest percentage.
 - [ ] First subtract fixed amounts, then percentages!
 - [ ] A price can never be negative.
+
+## This Is How We do It
+While starting out on this assignment, we wanted to start out by working in group as much as possible.
+Then once we know what to exactly do, we would split up and divide the work accordingly.
+But, we also quickly realized that that wouldn't work.
+This assignment in particular has too many 'unknown' factors for us to accurately gauge how much work should go into what part of the assignment, what the next step is, who should do what etc.
+So we decided to stick to working together throughout the entire assignment. We would sometimes, for very small parts of the assignment (like getting user requested information from the database to the View) split up and do this our own way.
+Then come again together, talk about why we chose our methods, see whose method works and/or analyse why some method isn't working.
+
+Splitting up and dividing the work simply wouldn't work for an assignment that we're both very unaware of how to tackle it.
+The way we chose to work on it was the best way to do it according to both Glenn and I.
+
+We took a something that we wanted for the price calculator to work (for example, a dropdown) and created a thorough TO-DO list for that specific part.
+Instead of dividing and conquering the assignment by splitting up, we chose to split up the work in even smaller, more attainable goals, and conquer those goals.
+
+If this was an assignment that we had more experience in, we definitely would've chosen to split up and divide the work.
+But for this particular assignment, we are 100000000% confident that this was the best way to do it.
+And that's because:
+
+![this-is-how-we-do-it](resources/images/this-is-how-we-do-it.gif)
+
