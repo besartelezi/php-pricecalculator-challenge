@@ -75,8 +75,8 @@ This means that we can start on doing the thing that you'd expect from a price c
 - [x] For the customer group: In case of variable discounts look for highest discount of all the groups the user has.
 - [x] If some groups have fixed discounts, count them all up.
 - [x] Look which discount (fixed or variable) will give the customer the most value. 
-- [ ] Now look at the discount of the customer.
-- [ ] In case both customer and customer group have a percentage, take the largest percentage.
+- [x] Now look at the discount of the customer.
+- [x] In case both customer and customer group have a percentage, take the largest percentage.
 - [ ] First subtract fixed amounts, then percentages!
 - [ ] A price can never be negative.
 
