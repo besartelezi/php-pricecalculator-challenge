@@ -42,6 +42,8 @@ class HomepageController
                 $customerGroupArray[] = new CustomerGroup($row[0], $row[1], $row[2], $row[3], $row[4]);
             }
 
+
+            //get highest variable discount from customer group
             $sqlGetMaxVariableDiscount = $this->databaseLoader->getConnection()->query("select MAX(variable_discount) from customer_group
             where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . "))
             or id=(select group_id from customer where  id =" . $customerDetails['id'] . ") 
@@ -49,6 +51,8 @@ class HomepageController
             $fetchMaxVariableDiscount = $sqlGetMaxVariableDiscount->fetch();
             $maxVariableDiscount = $fetchMaxVariableDiscount[0];
 
+
+            //get the sum of all fixed discounts from customer group
             $sqlGetSumFixedDiscounts = $this->databaseLoader->getConnection()->query("select sum(ifnull(fixed_discount,0)) from customer_group
             where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . "))
             or id=(select group_id from customer where  id =" . $customerDetails['id'] . ") 
@@ -56,15 +60,24 @@ class HomepageController
             $fetchSumFixedDiscounts = $sqlGetSumFixedDiscounts->fetch();
             $sumFixedDiscounts = $fetchSumFixedDiscounts[0];
 
+            //get the flat value of highest variable discount according to price of product
             $productPriceWithoutDiscount = $productDetails['price']/100;
             $variableDiscountValue = number_format($productPriceWithoutDiscount/100 * $maxVariableDiscount,2);
 
+            //decide if sum of fixed discounts or highest variable discount gives best value for customer
             if ($productPriceWithoutDiscount - $variableDiscountValue < $productPriceWithoutDiscount - $sumFixedDiscounts) {
                 $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $variableDiscountValue,2);
             }   else {
                 $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $sumFixedDiscounts,2);
             }
 
+            //variable for fixed discount customer
+            $customerFixedDiscount = $customerDetails['fixed_discount'];
+            if ($customerFixedDiscount === null){
+                $customerFixedDiscount = 0;
+            }
+
+            //decide if customer group variable or customer variable discount is the best value for the customer
             $customerVariableDiscount = $customerDetails['variable_discount'];
             if ($customerVariableDiscount === null) {
                 $finalVariableDiscount = $maxVariableDiscount;
@@ -75,6 +88,9 @@ class HomepageController
             else {
                 $finalVariableDiscount = $customerVariableDiscount;
             }
+
+
+
         }
 
 
