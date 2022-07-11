@@ -48,6 +48,13 @@ class HomepageController
             or id = (select parent_id from customer_group where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . ")));");
             $fetchMaxVariableDiscount = $sqlGetMaxVariableDiscount->fetch();
             $maxVariableDiscount = $fetchMaxVariableDiscount[0];
+
+            $sqlGetSumFixedDiscounts = $this->databaseLoader->getConnection()->query("select sum(ifnull(fixed_discount,0)) from customer_group
+            where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . "))
+            or id=(select group_id from customer where  id =" . $customerDetails['id'] . ") 
+            or id = (select parent_id from customer_group where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . ")));");
+            $fetchSumFixedDiscounts = $sqlGetSumFixedDiscounts->fetch();
+            $sumFixedDiscounts = $fetchSumFixedDiscounts[0];
         }
 
         // you should not echo anything inside your controller - only assign vars here
