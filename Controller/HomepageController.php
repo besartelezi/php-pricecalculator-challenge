@@ -18,16 +18,17 @@ class HomepageController
         while ($row = $sqlProduct->fetch()) {
             $productsArray[] = new product($row[0], $row[1], $row[2]);
         }
-        $sqlCustomer = $this->databaseLoader->getConnection()->query("SELECT id, firstname, lastname FROM customer");
+        $sqlCustomer = $this->databaseLoader->getConnection()->query("SELECT id, firstname, lastname, group_id FROM customer");
         $customersArray = [];
         while ($row = $sqlCustomer->fetch()) {
-            $customersArray[] = new Customer($row[0], $row[1], $row[2]);
+            $customersArray[] = new Customer($row[0], $row[1], $row[2],$row[3]);
         }
 
         if (isset($_POST['submit'])){
-            $productFetch = $this->databaseLoader->getConnection()->query("SELECT price,name FROM product where id =".$POST['products']);
+            $productFetch = $this->databaseLoader->getConnection()->query("SELECT * FROM product where id =".$POST['products']);
             $productDetails = $productFetch->fetch();
-
+            $customerFetch = $this->databaseLoader->getConnection()->query("SELECT * FROM customer where id =". $POST['customers']);
+            $customerDetails= $customerFetch->fetch();
         }
 
         // you should not echo anything inside your controller - only assign vars here
