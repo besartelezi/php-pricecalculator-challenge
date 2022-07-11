@@ -54,6 +54,28 @@ With that said, here are our next goals:
   - [x] Display the basic information (name, price, id)
 - [x] Show the requested data on the view
 
+## Getting down to :bee: siness
+Another chapter, another new object on the to-do list.
+- [ ] Get the user requested information, regarding the customer groups
+  - [ ] Create a Class called CustomerGroup
+  - [ ] Access the customer group ID from the Customer database
+    - [ ] This is something that we should normally already be able to access.
+          If not, then we should edit the query to be able to access it.
+  - [ ] Create a new query in the homepage controller that requests the customerGroup database with the matching customer group id.
+- [ ] var_dump the information of that customer group
+- [ ] Check if the customer group has a parent_id (if statement)
+  - [ ] If they have a parent_id, access the customer group of that parent_id
+    - [ ] Repeat this until we hit something with parent_id = NULL
 
+Once we have all the customer groups of the user requested customer, var_dump all the customer groups with all their information.
+Once we're sure that everything works accordingly, we can finally start on the logic part of the project.
+This means that we can start on doing the thing that you'd expect from a price calculator, and we'll calculate some prices!
 
-
+#### To calculate the price:
+- [ ] For the customer group: In case of variable discounts look for highest discount of all the groups the user has.
+- [ ] If some groups have fixed discounts, count them all up.
+- [ ] Look which discount (fixed or variable) will give the customer the most value. 
+- [ ] Now look at the discount of the customer.
+- [ ] In case both customer and customer group have a percentage, take the largest percentage.
+- [ ] First subtract fixed amounts, then percentages!
+- [ ] A price can never be negative.
