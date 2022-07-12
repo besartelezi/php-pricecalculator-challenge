@@ -77,8 +77,8 @@ This means that we can start on doing the thing that you'd expect from a price c
 - [x] Look which discount (fixed or variable) will give the customer the most value. 
 - [x] Now look at the discount of the customer.
 - [x] In case both customer and customer group have a percentage, take the largest percentage.
-- [ ] First subtract fixed amounts, then percentages!
-- [ ] A price can never be negative.
+- [x] First subtract fixed amounts, then percentages!
+- [x] A price can never be negative.
 
 ## This Is How We do It
 While starting out on this assignment, we wanted to start out by working in group as much as possible.
