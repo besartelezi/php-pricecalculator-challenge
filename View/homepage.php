@@ -45,7 +45,7 @@ Anything complex should be calculated in the model -->
 
         //to check if group id is correct and if we can get correct info out of database
         echo "value of the customer group variable discount according to product price: ";
-        echo $variableDiscountValue ."<br>";
+        echo $variableDiscountCustomerGroupValue ."<br>";
         echo "value of sum of fixed discounts customer group: ";
         echo $sumFixedDiscountsCustomerGroup ."<br>";
         echo "most valuable discount customer group: ";
@@ -55,8 +55,8 @@ Anything complex should be calculated in the model -->
         echo $sumFixedDiscountsCustomerGroup ."<br>";
         echo "fixed discount customer: ";
         echo $customerFixedDiscount . "<br>";
-        echo "Total fixed discount: ";
-        echo $totalSumFixedDiscounts;
+        echo 'The final price is: ';
+        echo $priceWithDiscount;
     }
     ?>
 
