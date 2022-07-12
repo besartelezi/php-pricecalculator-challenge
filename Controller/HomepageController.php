@@ -64,11 +64,18 @@ class HomepageController
             $productPriceWithoutDiscount = $productDetails['price'] / 100;
             $variableDiscountCustomerGroupValue = number_format($productPriceWithoutDiscount / 100 * $maxVariableDiscount, 2);
 
+            //checking what discounts are used and which ones aren't
+            //this will be needed in the view
+            $customerGroupFixedDiscountCheck = false;
+            $customerGroupVariableDiscountCheck = false;
+            $customerFixedDiscountCheck = true;
+            $customerVariableDiscountCheck = false;
+
             //check if customer has fixed discount
             $customerFixedDiscount = $customerDetails['fixed_discount'];
             if ($customerFixedDiscount === null) {
                 $customerFixedDiscount = 0;
-
+                $customerFixedDiscountCheck = false;
             }
 
 
@@ -80,19 +87,24 @@ class HomepageController
             if ($variableDiscountCustomerGroupValue < $sumFixedDiscountsCustomerGroup) {
                 $discountCustomerGroup = $sumFixedDiscountsCustomerGroup;
                 $priceWithDiscount -= $discountCustomerGroup;
+                $customerGroupFixedDiscountCheck = true;
             } elseif ($variableDiscountCustomerGroupValue > $sumFixedDiscountsCustomerGroup) {
                 $discountCustomerGroup = $variableDiscountCustomerGroupValue;
             }
                 //decide if customer group variable or customer variable discount is the best value for the customer
                 if ($customerVariableDiscount === null) {
+                    $customerVariableDiscount = 0;
                     $finalVariableDiscount = $discountCustomerGroup;
                     $priceWithDiscount -= $finalVariableDiscount;
+                    $customerGroupVariableDiscountCheck = true;
                 }else if ($maxVariableDiscount > $customerVariableDiscount) {
                     $finalVariableDiscount = $discountCustomerGroup;
                     $priceWithDiscount -= $finalVariableDiscount;
+                    $customerGroupVariableDiscountCheck = true;
                 } else {
                     $finalVariableDiscount = $customerVariableDiscount;
                     $priceWithDiscount -= number_format(($productPriceWithoutDiscount / 100 * $finalVariableDiscount), 2);
+                    $customerVariableDiscountCheck = true;
                 }
             }
 
