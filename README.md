@@ -36,10 +36,10 @@ With this information, we think that these have to be our next goals:
 - [x] Test out the controller and view
   - [x] Add code to the controller to create variables. These variables call on the Getter that was set in the module to get more specific information.
   - [x] Echo the variables that were made in the controller onto the view.
-This is something we will do in group.
-As long as we still don't have any small, concrete goals and we're still figuring out stuff, working together is advised.
-Once we're done with this small TO-DO list, Glenn and I will once again come together and figure out the next step.
-The most important thing we have to figure out, is what classes should be created exactly in the model.
+    This is something we will do in group.
+    As long as we still don't have any small, concrete goals and we're still figuring out stuff, working together is advised.
+    Once we're done with this small TO-DO list, Glenn and I will once again come together and figure out the next step.
+    The most important thing we have to figure out, is what classes should be created exactly in the model.
 
 ## MVC 2: Electric Boogaloo
 We were finally able to properly connect through the database, while following the MVC structure AND get specific information from the database.
@@ -47,7 +47,7 @@ After getting this "massive W" (how the cool youths of today like to refer to so
 One of those advantages being how easy it makes it to be able to work in teams without interfering in each other's code.
 With that said, here are our next goals:
 - [x] Create a dropdown for the customers as well
-- [x] Check if the $_GET or $_POST show up 
+- [x] Check if the $_GET or $_POST show up
 - [x] Create a new function in the controller, that asks the database for the information the user requested
   - [x] Get user input
   - [x] Get basic information of the product the user selected
@@ -60,7 +60,7 @@ Another chapter, another new object on the to-do list.
   - [x] Create a Class called CustomerGroup
   - [x] Access the customer group ID from the Customer database
     - [x] This is something that we should normally already be able to access.
-          If not, then we should edit the query to be able to access it.
+      If not, then we should edit the query to be able to access it.
   - [x] Create a new query in the homepage controller that requests the customerGroup database with the matching customer group id.
 - [x] var_dump the information of that customer group
 - [x] Check if the customer group has a parent_id (if statement)
@@ -74,7 +74,7 @@ This means that we can start on doing the thing that you'd expect from a price c
 #### To calculate the price:
 - [x] For the customer group: In case of variable discounts look for highest discount of all the groups the user has.
 - [x] If some groups have fixed discounts, count them all up.
-- [x] Look which discount (fixed or variable) will give the customer the most value. 
+- [x] Look which discount (fixed or variable) will give the customer the most value.
 - [x] Now look at the discount of the customer.
 - [x] In case both customer and customer group have a percentage, take the largest percentage.
 - [x] First subtract fixed amounts, then percentages!
@@ -99,4 +99,3 @@ But for this particular assignment, we are 100000000% confident that this was th
 And that's because:
 
 ![this-is-how-we-do-it](resources/images/this-is-how-we-do-it.gif)
-
