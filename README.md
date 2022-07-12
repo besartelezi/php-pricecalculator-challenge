@@ -99,3 +99,21 @@ But for this particular assignment, we are 100000000% confident that this was th
 And that's because:
 
 ![this-is-how-we-do-it](resources/images/this-is-how-we-do-it.gif)
+
+## Working on the Nice-To-Have Features
+Now that we have all the must-have features and the price calculator is working as intended, we must now start on the nice to have features.
+But before we do that, we decided to do some things first ourselves.
+We will focus on the following:
+- [ ] Cleaning up the view
+  - [ ] Make the View look more presentable
+- [ ] Cleaning up code/adding comments where needed
+- [ ] Refactoring code
+  - [ ] There might be some issues with the way we handled our code.
+        In order to adhere more to the MVC rules, we might move our code around a lot.
+
+Once we're done with that and there's still some time left, we will go and add the nice-to-have features.
+These are the following:
+- [ ] An actual login page for a customer
+- [ ] A table where you can see in detail how the price is calculated
+- [ ] The possibility to have different prices for different quantities (look, 1 EUR per item for 1, 0.9 EUR per item for 100, ...)
+- [ ] A category page for the different products
