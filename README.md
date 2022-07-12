@@ -105,7 +105,11 @@ Now that we have all the must-have features and the price calculator is working 
 But before we do that, we decided to do some things first ourselves.
 We will focus on the following:
 - [ ] Cleaning up the view
-  - [ ] Make the View look more presentable
+  - [x] Make the View look more presentable
+  - [x] We need to show the following information on the table:
+    - [x] Price without discounts
+    - [x] Completely discounted Price
+    - [x] Titles of all different discounts
 - [ ] Cleaning up code/adding comments where needed
 - [ ] Refactoring code
   - [ ] There might be some issues with the way we handled our code.
