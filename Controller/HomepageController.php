@@ -21,14 +21,14 @@ class HomepageController
         $sqlCustomer = $this->databaseLoader->getConnection()->query("SELECT id, firstname, lastname, group_id FROM customer");
         $customersArray = [];
         while ($row = $sqlCustomer->fetch()) {
-            $customersArray[] = new Customer($row[0], $row[1], $row[2],$row[3]);
+            $customersArray[] = new Customer($row[0], $row[1], $row[2], $row[3]);
         }
 
-        if (isset($_POST['submit'])){
-            $productFetch = $this->databaseLoader->getConnection()->query("SELECT * FROM product where id =".$POST['products']);
+        if (isset($_POST['submit'])) {
+            $productFetch = $this->databaseLoader->getConnection()->query("SELECT * FROM product where id =" . $POST['products']);
             $productDetails = $productFetch->fetch();
-            $customerFetch = $this->databaseLoader->getConnection()->query("SELECT * FROM customer where id =". $POST['customers']);
-            $customerDetails= $customerFetch->fetch();
+            $customerFetch = $this->databaseLoader->getConnection()->query("SELECT * FROM customer where id =" . $POST['customers']);
+            $customerDetails = $customerFetch->fetch();
 
             $sqlFixed = $this->databaseLoader->getConnection()->query("Alter table customer_group modify fixed_discount int;");
             $sqlVariable = $this->databaseLoader->getConnection()->query("Alter table customer_group modify variable_discount int;");
@@ -58,42 +58,46 @@ class HomepageController
             or id=(select group_id from customer where  id =" . $customerDetails['id'] . ") 
             or id = (select parent_id from customer_group where id = (select parent_id from customer_group where id =(select group_id from customer where  id =" . $customerDetails['id'] . ")));");
             $fetchSumFixedDiscounts = $sqlGetSumFixedDiscounts->fetch();
-            $sumFixedDiscounts = $fetchSumFixedDiscounts[0];
+            $sumFixedDiscountsCustomerGroup = $fetchSumFixedDiscounts[0];
 
             //get the flat value of highest variable discount according to price of product
-            $productPriceWithoutDiscount = $productDetails['price']/100;
-            $variableDiscountValue = number_format($productPriceWithoutDiscount/100 * $maxVariableDiscount,2);
+            $productPriceWithoutDiscount = $productDetails['price'] / 100;
+            $variableDiscountValue = number_format($productPriceWithoutDiscount / 100 * $maxVariableDiscount, 2);
+
 
             //decide if sum of fixed discounts or highest variable discount gives best value for customer
-            if ($productPriceWithoutDiscount - $variableDiscountValue < $productPriceWithoutDiscount - $sumFixedDiscounts) {
-                $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $variableDiscountValue,2);
-            }   else {
-                $discountedPriceCustomerGroup = number_format($productPriceWithoutDiscount - $sumFixedDiscounts,2);
+            if ($productPriceWithoutDiscount - $variableDiscountValue < $productPriceWithoutDiscount - $sumFixedDiscountsCustomerGroup) {
+                $discountCustomerGroup = $variableDiscountValue;
+            } else {
+                $discountCustomerGroup = $sumFixedDiscountsCustomerGroup;
             }
 
             //variable for fixed discount customer
             $customerFixedDiscount = $customerDetails['fixed_discount'];
-            if ($customerFixedDiscount === null){
+            if ($customerFixedDiscount === null) {
                 $customerFixedDiscount = 0;
+                $sumFixedDiscountsCustomerGroup = +$customerFixedDiscount;
+            }
+
+            //add fixed discount customer to the sum of all fixed discounts
+            if ($discountCustomerGroup = $sumFixedDiscountsCustomerGroup) {
+                $totalSumFixedDiscounts = $customerFixedDiscount + $sumFixedDiscountsCustomerGroup;
+            } else {
+                $totalSumFixedDiscounts = $customerFixedDiscount;
             }
 
             //decide if customer group variable or customer variable discount is the best value for the customer
             $customerVariableDiscount = $customerDetails['variable_discount'];
             if ($customerVariableDiscount === null) {
                 $finalVariableDiscount = $maxVariableDiscount;
-            }
-            else if ($maxVariableDiscount > $customerVariableDiscount) {
+            } else if ($maxVariableDiscount > $customerVariableDiscount) {
                 $finalVariableDiscount = $maxVariableDiscount;
-            }
-            else {
+            } else {
                 $finalVariableDiscount = $customerVariableDiscount;
             }
 
 
-
         }
-
-
 
 
         // you should not echo anything inside your controller - only assign vars here
