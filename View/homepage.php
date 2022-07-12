@@ -39,32 +39,11 @@
 
         <?php
         if (isset($POST['submit'])) {
+            echo '<br><div class="text-center">';
             echo "Choses customer: " . $customerDetails['firstname'] . " " . $customerDetails['lastname'] . "<br>";
             echo "Product name: " . $productDetails['name'] . "<br>";
             echo "Price: €" . $productPriceWithoutDiscount . "<br>";
-
-
-            //to check if group id is correct and if we can get correct info out of database
-            echo "value of the customer group variable discount according to product price: ";
-            echo $variableDiscountCustomerGroupValue . "<br>";
-            echo "value of sum of fixed discounts customer group: ";
-            echo $sumFixedDiscountsCustomerGroup . "<br>";
-            echo "most valuable discount customer group: ";
-            echo $discountCustomerGroup . "<br>";
-            echo "add customer fixed discount to total discount of customer group: <br> ";
-            echo "Fixed discount customer group total: ";
-            echo $sumFixedDiscountsCustomerGroup . "<br>";
-            echo "fixed discount customer: ";
-            echo $customerFixedDiscount . "<br>";
-            echo "variable discount customer: ";
-            echo $customerVariableDiscount . "<br>";
-            echo 'The final price is: ';
-            if ($priceWithDiscount <= 0) {
-                echo '<img src ="./resources/images/its-free-real-sate.gif">';
-            } else {
-                echo $priceWithDiscount;
-            }
-
+            echo '</div>';
             echo '<table class="table table-sm">';
             echo '<thead>
         <tr>
