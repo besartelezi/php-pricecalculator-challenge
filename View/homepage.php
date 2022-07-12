@@ -39,20 +39,26 @@ Anything complex should be calculated in the model -->
 
     <?php
     if (isset($POST['submit'])){
+        echo "Choses customer: " . $customerDetails['firstname'] ." " . $customerDetails['lastname'] ."<br>";
         echo "Product name: " .$productDetails['name'] ."<br>";
         echo "Price: €" .$productPriceWithoutDiscount ."<br>";
-//        echo $customerDetails['fixed_discount'] . "<br>";
-//        echo $customerDetails['variable_discount'];
-        //to check if group id is correct and if we can get correct info out of database
-//        var_dump($productDetails);
-//        var_dump($customerGroupArray);
-//        var_dump($maxVariableDiscount);
-        var_dump($finalVariableDiscount);
 
+        //to check if group id is correct and if we can get correct info out of database
+        echo "value of the customer group variable discount according to product price: ";
+        echo $variableDiscountValue ."<br>";
+        echo "value of sum of fixed discounts customer group: ";
+        echo $sumFixedDiscountsCustomerGroup ."<br>";
+        echo "most valuable discount customer group: ";
+        echo $discountCustomerGroup ."<br>";
+        echo "add customer fixed discount to total discount of customer group: <br> ";
+        echo "Fixed discount customer group total: ";
+        echo $sumFixedDiscountsCustomerGroup ."<br>";
+        echo "fixed discount customer: ";
+        echo $customerFixedDiscount . "<br>";
+        echo "Total fixed discount: ";
+        echo $totalSumFixedDiscounts;
     }
     ?>
 
-<!-- code to get price -->
-<!--    $price = number_format($product->getProductPrice() / 100, 2);-->
 </section>
 <?php require 'includes/footer.php'?>
