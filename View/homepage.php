@@ -92,7 +92,11 @@
                 echo '<td class="table-danger">Highest customer group variable discount in €</td>
         <td class="table-danger">' . $variableDiscountCustomerGroupValue . '</td></tr>';
             }
-            echo '<td class="text-center" colspan="2" style="font-weight: bold; font-size: 35px">Total Price: '  . $priceWithDiscount . "€" .'</td></tr></tbody></table>';
+            echo '<td class="text-center" colspan="2" style="font-weight: bold; font-size: 35px">Total Price: ';
+                if ($priceWithDiscount <= 0){
+                    echo '<img src ="./resources/images/its-free-real-sate.gif">';
+                } else echo $priceWithDiscount;
+            echo "€" .'</td></tr></tbody></table>';
 
                 
 
