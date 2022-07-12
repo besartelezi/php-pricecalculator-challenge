@@ -55,6 +55,8 @@ Anything complex should be calculated in the model -->
         echo $sumFixedDiscountsCustomerGroup ."<br>";
         echo "fixed discount customer: ";
         echo $customerFixedDiscount . "<br>";
+        echo "variable discount customer: ";
+        echo $customerVariableDiscount . "<br>";
         echo 'The final price is: ';
         if ($priceWithDiscount <= 0) {
             echo '<img src ="./resources/images/its-free-real-sate.gif">';
