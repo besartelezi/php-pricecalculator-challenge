@@ -56,7 +56,12 @@ Anything complex should be calculated in the model -->
         echo "fixed discount customer: ";
         echo $customerFixedDiscount . "<br>";
         echo 'The final price is: ';
-        echo $priceWithDiscount;
+        if ($priceWithDiscount <= 0) {
+            echo '<img src ="https://c.tenor.com/H6dA5G4c12kAAAAC/its-free-real-sate.gif">';
+        }
+        else {
+            echo $priceWithDiscount;
+        }
     }
     ?>
 
