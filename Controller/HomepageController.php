@@ -82,13 +82,13 @@ class HomepageController
                 $priceWithDiscount -= $discountCustomerGroup;
             } elseif ($variableDiscountCustomerGroupValue > $sumFixedDiscountsCustomerGroup) {
                 $discountCustomerGroup = $variableDiscountCustomerGroupValue;
-
+            }
                 //decide if customer group variable or customer variable discount is the best value for the customer
                 if ($customerVariableDiscount === null) {
-                    $finalVariableDiscount = $discountCustomerGroup;
+                    $finalVariableDiscount = $variableDiscountCustomerGroupValue;
                     $priceWithDiscount -= $finalVariableDiscount;
-                } else if ($maxVariableDiscount > $customerVariableDiscount) {
-                    $finalVariableDiscount = $discountCustomerGroup;
+                }else if ($maxVariableDiscount > $customerVariableDiscount) {
+                    $finalVariableDiscount = $variableDiscountCustomerGroupValue;
                     $priceWithDiscount -= $finalVariableDiscount;
                 } else {
                     $finalVariableDiscount = $customerVariableDiscount;
@@ -96,7 +96,7 @@ class HomepageController
                 }
             }
 
-        }
+
 
 
         // you should not echo anything inside your controller - only assign vars here
