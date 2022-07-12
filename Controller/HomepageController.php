@@ -62,41 +62,39 @@ class HomepageController
 
             //get the flat value of highest variable discount according to price of product
             $productPriceWithoutDiscount = $productDetails['price'] / 100;
-            $variableDiscountValue = number_format($productPriceWithoutDiscount / 100 * $maxVariableDiscount, 2);
+            $variableDiscountCustomerGroupValue = number_format($productPriceWithoutDiscount / 100 * $maxVariableDiscount, 2);
 
-
-            //decide if sum of fixed discounts or highest variable discount gives best value for customer
-            if ($productPriceWithoutDiscount - $variableDiscountValue < $productPriceWithoutDiscount - $sumFixedDiscountsCustomerGroup) {
-                $discountCustomerGroup = $variableDiscountValue;
-            } else {
-                $discountCustomerGroup = $sumFixedDiscountsCustomerGroup;
-            }
-
-            //variable for fixed discount customer
+            //check if customer has fixed discount
             $customerFixedDiscount = $customerDetails['fixed_discount'];
             if ($customerFixedDiscount === null) {
                 $customerFixedDiscount = 0;
-                $sumFixedDiscountsCustomerGroup = +$customerFixedDiscount;
+
             }
 
-            //add fixed discount customer to the sum of all fixed discounts
-            if ($discountCustomerGroup = $sumFixedDiscountsCustomerGroup) {
-                $totalSumFixedDiscounts = $customerFixedDiscount + $sumFixedDiscountsCustomerGroup;
-            } else {
-                $totalSumFixedDiscounts = $customerFixedDiscount;
-            }
 
-            //decide if customer group variable or customer variable discount is the best value for the customer
             $customerVariableDiscount = $customerDetails['variable_discount'];
-            if ($customerVariableDiscount === null) {
-                $finalVariableDiscount = $maxVariableDiscount;
-            } else if ($maxVariableDiscount > $customerVariableDiscount) {
-                $finalVariableDiscount = $maxVariableDiscount;
-            } else {
-                $finalVariableDiscount = $customerVariableDiscount;
+            $priceWithDiscount = $productPriceWithoutDiscount;
+            $priceWithDiscount -= $customerFixedDiscount;
+
+            //decide if sum of fixed discounts or highest variable discount gives best value for customer
+            if ($variableDiscountCustomerGroupValue < $sumFixedDiscountsCustomerGroup) {
+                $discountCustomerGroup = $sumFixedDiscountsCustomerGroup;
+                $priceWithDiscount -= $discountCustomerGroup;
+            } elseif ($variableDiscountCustomerGroupValue > $sumFixedDiscountsCustomerGroup) {
+                $discountCustomerGroup = $variableDiscountCustomerGroupValue;
+
+                //decide if customer group variable or customer variable discount is the best value for the customer
+                if ($customerVariableDiscount === null) {
+                    $finalVariableDiscount = $discountCustomerGroup;
+                    $priceWithDiscount -= $finalVariableDiscount;
+                } else if ($maxVariableDiscount > $customerVariableDiscount) {
+                    $finalVariableDiscount = $discountCustomerGroup;
+                    $priceWithDiscount -= $finalVariableDiscount;
+                } else {
+                    $finalVariableDiscount = $customerVariableDiscount;
+                    $priceWithDiscount -= number_format(($productPriceWithoutDiscount / 100 * $finalVariableDiscount), 2);
+                }
             }
-
-
         }
 
 
