@@ -85,10 +85,10 @@ class HomepageController
             }
                 //decide if customer group variable or customer variable discount is the best value for the customer
                 if ($customerVariableDiscount === null) {
-                    $finalVariableDiscount = $variableDiscountCustomerGroupValue;
+                    $finalVariableDiscount = $discountCustomerGroup;
                     $priceWithDiscount -= $finalVariableDiscount;
                 }else if ($maxVariableDiscount > $customerVariableDiscount) {
-                    $finalVariableDiscount = $variableDiscountCustomerGroupValue;
+                    $finalVariableDiscount = $discountCustomerGroup;
                     $priceWithDiscount -= $finalVariableDiscount;
                 } else {
                     $finalVariableDiscount = $customerVariableDiscount;
