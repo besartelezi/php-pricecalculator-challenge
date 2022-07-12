@@ -95,9 +95,7 @@ class HomepageController
                     $priceWithDiscount -= number_format(($productPriceWithoutDiscount / 100 * $finalVariableDiscount), 2);
                 }
             }
-            if ($priceWithDiscount < 0) {
-                $priceWithDiscount = 0;
-            }
+
         }
 
 
